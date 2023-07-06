@@ -1,0 +1,50 @@
+﻿<Window x:Class="BestPizzaMaster.Products.ProductListWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:BestPizzaMaster.Products"
+        mc:Ignorable="d"
+        Title="ProuctListWindow" Height="450" Width="800">    
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="4*"></ColumnDefinition>
+            <ColumnDefinition Width="10*"></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+
+        <StackPanel Grid.Row="0" Grid.Column="0" HorizontalAlignment="Stretch">
+            <TextBlock FontSize="32" Name="titleText" Text="Location"></TextBlock>
+
+            <Label>Name:</Label>
+            <TextBox Name="nameBox"></TextBox>
+            <Label>Sell price:</Label>
+            <TextBox Name="sellingPrice"></TextBox>
+            <Label>Buy price:</Label>
+            <TextBox Name="buyingPrice"></TextBox>
+            <Label>Amount:</Label>
+            <TextBox Name="amountBox"></TextBox>
+
+            <TextBlock Name="earnings" Margin="5 10 5 10" Text="Earnings: "></TextBlock>
+            
+            <Button Content="Add" Click="Add_Click" Margin="10"></Button>
+            <Button x:Name="deleteButton" Click="deleteButton_Click" Margin="10">Delete</Button>
+            <Button x:Name="backButton" Click="backButton_Click" Margin="10">Back</Button>
+        </StackPanel>
+
+        <ScrollViewer HorizontalAlignment="Stretch" Grid.Column="1">
+            <ListView x:Name="productsList">
+                <ListView.ItemTemplate>
+                    <DataTemplate DataType="local:Product">
+                        <StackPanel>
+                            <TextBlock FontSize="18" Text="{Binding Name}"></TextBlock>
+                            <TextBlock FontSize="18" Text="{Binding SellingPrice}"></TextBlock>
+                            <TextBlock FontSize="18" Text="{Binding BuyingPrice}"></TextBlock>
+                            <TextBlock FontSize="18" Text="{Binding Amount}"></TextBlock>
+                            <TextBlock FontSize="18" Text="{Binding Earnings}"></TextBlock>
+                        </StackPanel>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </ScrollViewer>    
+    </Grid>
+</Window>
